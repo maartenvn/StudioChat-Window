@@ -62,3 +62,20 @@ body {
 .Text--white a {
   color: #fff;
 }
+
+.chat__header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 10000;
+}
+
+.chat__content {
+  margin-bottom: 66px !important;
+}
+
+.chat__footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}

@@ -587,20 +587,6 @@ class ChatWindow extends React.Component<Props, State> {
           flex: 1,
         }}
       >
-        <motion.iframe
-          src={`https://reichert621.github.io/?v=2`}
-          sandbox="allow-same-origin allow-scripts allow-top-navigation"
-          style={{
-            flex: 1,
-            width: '100%',
-            border: 'none',
-            boxShadow: 'none',
-          }}
-          initial={{opacity: 0, y: 2}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.4, ease: 'easeIn'}}
-          onLoad={this.handleGameLoaded}
-        />
         <Flex
           p={3}
           sx={{
@@ -735,7 +721,7 @@ class ChatWindow extends React.Component<Props, State> {
 
     return (
       <Flex
-        className={isMobile ? 'Mobile' : ''}
+        className={isMobile ? 'Mobile chat__header' : 'chat__header'}
         sx={{
           bg: 'background',
           flexDirection: 'column',
@@ -766,6 +752,7 @@ class ChatWindow extends React.Component<Props, State> {
         </Box>
 
         <Box
+          className="chat__content"
           p={3}
           sx={{
             flex: 1,
@@ -808,8 +795,10 @@ class ChatWindow extends React.Component<Props, State> {
         </Box>
         {shouldDisplayBranding && <PapercupsBranding />}
         <Box
+          className="chat__footer"
           px={2}
           sx={{
+            backgroundColor: 'white',
             borderTop: '1px solid rgb(230, 230, 230)',
             // TODO: only show shadow on focus TextArea below
             boxShadow: 'rgba(0, 0, 0, 0.1) 0px 0px 100px 0px',
@@ -827,12 +816,6 @@ class ChatWindow extends React.Component<Props, State> {
             onSendMessage={this.handleSendMessage}
           />
         </Box>
-        <img
-          alt="Papercups"
-          src="https://papercups.s3.us-east-2.amazonaws.com/papercups-logo.svg"
-          width="0"
-          height="0"
-        />
       </Flex>
     );
   }

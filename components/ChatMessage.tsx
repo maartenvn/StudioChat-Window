@@ -8,22 +8,22 @@ import {Message, User} from '../helpers/utils';
 
 dayjs.extend(utc);
 
-const formatRelativeTime = (date: dayjs.Dayjs) => {
+export const formatRelativeTime = (date: dayjs.Dayjs) => {
   const ms = dayjs().diff(date, 'second');
   const mins = Math.floor(ms / 60);
   const hrs = Math.floor(mins / 60);
   const days = Math.floor(hrs / 24);
 
   if (ms < 10) {
-    return 'just now';
+    return 'net';
   } else if (ms < 60) {
-    return `${ms} seconds ago`;
+    return `${ms} seconden geleden`;
   } else if (mins <= 60) {
-    return `${mins} minute${mins === 1 ? '' : 's'} ago`;
+    return `${mins} ${mins === 1 ? 'minuut' : 'minuten'} geleden`;
   } else if (hrs <= 24) {
-    return `${hrs} hour${hrs === 1 ? '' : 's'} ago`;
+    return `${hrs} ${hrs === 1 ? 'uur' : 'uren'} geleden`;
   } else {
-    return `${days} day${days === 1 ? '' : 's'} ago`;
+    return `${days} ${days === 1 ? 'dag' : 'dagen'} geleden`;
   }
 };
 
@@ -129,7 +129,7 @@ const ChatMessage = ({
         {shouldDisplayTimestamp && (
           <Flex m={1} sx={{justifyContent: 'flex-end'}}>
             <Text sx={{color: 'gray'}}>
-              {timestamp ? `Sent ${timestamp}` : 'Sending...'}
+              {timestamp ? `Verzonden ${timestamp}` : 'Verzenden...'}
             </Text>
           </Flex>
         )}
@@ -154,7 +154,7 @@ const ChatMessage = ({
       {shouldDisplayTimestamp && (
         <Flex m={1} sx={{justifyContent: 'flex-start'}}>
           <Text sx={{color: 'gray'}}>
-            {identifer} · Sent {timestamp}
+            {identifer} · Verzonden {timestamp}
           </Text>
         </Flex>
       )}
