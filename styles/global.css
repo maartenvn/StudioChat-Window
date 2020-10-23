@@ -63,11 +63,10 @@ body {
   color: #fff;
 }
 
-.chat__header {
+.chat {
   width: 100%;
   position: fixed;
-  bottom: 0;
-  z-index: 10000;
+  top: 0;
 }
 
 .chat__content {

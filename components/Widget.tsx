@@ -20,6 +20,7 @@ type Config = {
   agentAvailableText?: string;
   agentUnavailableText?: string;
   showAgentAvailability?: boolean;
+  hideHeader?: boolean;
   defaultIsOpen?: boolean;
   requireEmailUpfront?: boolean;
   mobile?: boolean;
@@ -51,6 +52,7 @@ const sanitizeConfigPayload = (payload: any): Config => {
     agentAvailableText,
     agentUnavailableText,
     showAgentAvailability,
+    hideHeader,
   } = payload;
 
   return {
@@ -65,6 +67,7 @@ const sanitizeConfigPayload = (payload: any): Config => {
     agentAvailableText,
     agentUnavailableText,
     showAgentAvailability,
+    hideHeader,
   };
 };
 
@@ -138,6 +141,7 @@ class Wrapper extends React.Component<Props, State> {
       baseUrl = 'https://app.papercups.io',
       requireEmailUpfront = '0',
       showAgentAvailability = '0',
+      hideHeader = '0',
       mobile = '0',
       metadata = '{}',
     } = config;
@@ -145,6 +149,7 @@ class Wrapper extends React.Component<Props, State> {
     const shouldRequireEmail = !!Number(requireEmailUpfront);
     const isMobile = !!Number(mobile);
     const shouldHideAvailability = !!Number(showAgentAvailability);
+    const shouldHideHeader = !!Number(hideHeader);
     const theme = getThemeConfig({primary: primaryColor});
     const customer = parseCustomerMetadata(metadata);
 
@@ -161,6 +166,7 @@ class Wrapper extends React.Component<Props, State> {
           agentAvailableText={agentAvailableText}
           agentUnavailableText={agentUnavailableText}
           showAgentAvailability={shouldHideAvailability}
+          hideHeader={shouldHideHeader}
           shouldRequireEmail={shouldRequireEmail}
           isMobile={isMobile}
           baseUrl={baseUrl}

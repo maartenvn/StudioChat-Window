@@ -36,6 +36,7 @@ type Props = {
   agentAvailableText?: string;
   agentUnavailableText?: string;
   showAgentAvailability?: boolean;
+  hideHeader?: boolean;
 };
 
 type State = {
@@ -685,6 +686,7 @@ class ChatWindow extends React.Component<Props, State> {
       accountId,
       isMobile = false,
       showAgentAvailability = false,
+      hideHeader = false,
     } = this.props;
     const {
       customerId,
@@ -721,7 +723,7 @@ class ChatWindow extends React.Component<Props, State> {
 
     return (
       <Flex
-        className={isMobile ? 'Mobile chat__header' : 'chat__header'}
+        className={isMobile ? 'Mobile chat' : 'chat'}
         sx={{
           bg: 'background',
           flexDirection: 'column',
@@ -730,26 +732,28 @@ class ChatWindow extends React.Component<Props, State> {
           flex: 1,
         }}
       >
-        <Box sx={{bg: 'primary'}}>
-          <Box pt={3} pb={showAgentAvailability ? 12 : 16} px={20}>
-            <Heading
-              as="h2"
-              className="Papercups-heading"
-              sx={{color: 'background', my: 1}}
-            >
-              {title}
-            </Heading>
-            <Text sx={{color: 'offset'}}>{subtitle}</Text>
-          </Box>
+        {!hideHeader && (
+          <Box sx={{bg: 'primary'}}>
+            <Box pt={3} pb={showAgentAvailability ? 12 : 16} px={20}>
+              <Heading
+                as="h2"
+                className="Papercups-heading"
+                sx={{color: 'background', my: 1}}
+              >
+                {title}
+              </Heading>
+              <Text sx={{color: 'offset'}}>{subtitle}</Text>
+            </Box>
 
-          {showAgentAvailability && (
-            <AgentAvailability
-              hasAvailableAgents={hasAvailableAgents}
-              agentAvailableText={agentAvailableText}
-              agentUnavailableText={agentUnavailableText}
-            />
-          )}
-        </Box>
+            {showAgentAvailability && (
+              <AgentAvailability
+                hasAvailableAgents={hasAvailableAgents}
+                agentAvailableText={agentAvailableText}
+                agentUnavailableText={agentUnavailableText}
+              />
+            )}
+          </Box>
+        )}
 
         <Box
           className="chat__content"
