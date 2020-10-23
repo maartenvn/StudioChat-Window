@@ -10,7 +10,7 @@ Run the development server with:
 npm run dev
 ```
 
-This will start the app at [http://localhost:8080](http://localhost:8080).
+This will start the app at [http://localhost:3000](http://localhost:3000).
 
 You can start editing the page by modifying the components in the `/components` directory. The page auto-updates as you edit the file.
 
