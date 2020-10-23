@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: studiochat
+  IMAGE_NAME: studiochat-window
 
 jobs:
   # Push image to GitHub Packages.
