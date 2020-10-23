@@ -1,6 +1,6 @@
 # StudioChat - Windows
 
-This repo contains the code for the chat window that is rendered in an iframe and used for [StudioChat[(github.com/maartenvn/studiochat)
+This repo contains the code for the chat window that is rendered in an iframe and used for [StudioChat[(https://github.com/maartenvn/studiochat)
 
 ## Getting Started
 
